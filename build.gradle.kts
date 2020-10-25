@@ -21,7 +21,7 @@ plugins {
 // Import variables from gradle.properties file
 val pluginGroup: String by project
 // To avoid name collisions, use `project.findProperty(...) as String`
-val pluginName_ = project.findProperty("pluginName") as String
+val pluginTitle = project.findProperty("pluginName") as String
 val pluginVersion: String by project
 val pluginSinceBuild: String by project
 val pluginUntilBuild: String by project
@@ -46,7 +46,7 @@ dependencies {
 // Configure gradle-intellij-plugin plugin.
 // Read more: https://github.com/JetBrains/gradle-intellij-plugin
 intellij {
-    pluginName = pluginName_
+    pluginName = pluginTitle
     version = platformVersion
     type = platformType
     downloadSources = platformDownloadSources.toBoolean()
