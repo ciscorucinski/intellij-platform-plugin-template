@@ -32,6 +32,9 @@ val platformVersion: String by project
 val platformPlugins: String by project
 val platformDownloadSources: String by project
 
+val gradleWrapperVersion = project.findProperty("gradleWrapper") as String
+val gradleDownloadSources: String by project
+
 group = pluginGroup
 version = pluginVersion
 
@@ -121,5 +124,13 @@ tasks {
         // Specify pre-release label to publish the plugin in a custom Release Channel automatically. Read more:
         // https://jetbrains.org/intellij/sdk/docs/tutorials/build_system/deployment.html#specifying-a-release-channel
         channels(pluginVersion.split('-').getOrElse(1) { "default" }.split('.').first())
+    }
+
+    wrapper {
+        gradleVersion = gradleWrapperVersion
+        distributionType = when (gradleDownloadSources.toBoolean()) {
+            true -> Wrapper.DistributionType.ALL
+            false -> Wrapper.DistributionType.BIN
+        }
     }
 }
