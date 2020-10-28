@@ -32,7 +32,7 @@ val platformVersion: String by project
 val platformPlugins: String by project
 val platformDownloadSources: String by project
 
-val gradleWrapperVersion = project.findProperty("gradleWrapper") as String
+val gradleWrapperVersion = project.findProperty("gradleVersion") as String
 val gradleDownloadSources: String by project
 
 group = pluginGroup
